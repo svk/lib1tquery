@@ -1,0 +1,12 @@
+#beginning run 1321721284 (Sat Nov 19 16:48:04 2011)
+#at sh.titan.uio.no
+#from config ../config/ssd.ini
+from test queries my.1k.tests.txt
+#finished initialization of run 1321721941 (Sat Nov 19 16:59:01 2011)
+1321721942	1000	373.3390	373.3390
+#ended run 1321721942 (Sat Nov 19 16:59:02 2011)
+#at sh.titan.uio.no
+#from config ../config/ssd.ini
+##took 373397 microseconds to process 1000 queries.
+#mean processing time: 373.3970 microseconds.
+#finished de-initialization of run 1321721944 (Sat Nov 19 16:59:04 2011)

@@ -1,0 +1,10 @@
+This is awaiting some prettier packaging, including documentation
+(which will be done after my thesis).
+
+Before this is done, looking at the repository svk/svk-ngram-tools
+may be helpful for anyone who needs to understand how the library
+is used. This repository contains lib1tquery as well as additional
+code for my thesis. (The "lib1tquery" repository will be updated
+in the future.)
+
+Specific questions can be directed to the author at steinarvk@gmail.com .

@@ -1,0 +1,24 @@
+#!/bin/sh
+TAPEDIR=$1
+TREEDIR=$2
+echo "Converting tapes in $TAPEDIR into trees in $TREEDIR."
+GRAMS2=`ls -d $TAPEDIR/* | grep 2gram`
+GRAMS3=`ls -d $TAPEDIR/* | grep 3gram`
+GRAMS4=`ls -d $TAPEDIR/* | grep 4gram`
+GRAMS5=`ls -d $TAPEDIR/* | grep 5gram`
+echo "2-grams: $GRAMS2, " `ls $GRAMS2 | wc -l` " files "
+echo "3-grams: $GRAMS3, " `ls $GRAMS3 | wc -l` " files "
+echo "4-grams: $GRAMS4, " `ls $GRAMS4 | wc -l` " files "
+echo "5-grams: $GRAMS5, " `ls $GRAMS5 | wc -l` " files "
+sleep 10
+echo "Starting."
+echo `date` ": starting" >> ../logs/build-treeset.log
+time ./mergetapes-to-sfbtin -c -F -B 20 -p 1 -n 2 -o $TREEDIR/tree-2gram/ $GRAMS2/* 2>> ../logs/build-treeset.log
+echo `date` ": 2-grams finished" >> ../logs/build-treeset.log
+time ./mergetapes-to-sfbtin -c -F -B 10 -p 1 -n 3 -o $TREEDIR/tree-3gram/ $GRAMS3/* 2>> ../logs/build-treeset.log
+echo `date` ": 3-grams finished" >> ../logs/build-treeset.log
+time ./mergetapes-to-sfbtin -c -F -B 7 -p 2 -n 4 -o $TREEDIR/tree-4gram/ $GRAMS4/* 2>> ../logs/build-treeset.log
+echo `date` ": 4-grams finished" >> ../logs/build-treeset.log
+time ./mergetapes-to-sfbtin -c -F -B 5 -p 2 -n 5 -o $TREEDIR/tree-5gram/ $GRAMS5/* 2>> ../logs/build-treeset.log
+echo `date` ": 5-grams finished" >> ../logs/build-treeset.log
+du --summarize --human-readable --total $TREEDIR/* >> ../logs/build-treeset.log
